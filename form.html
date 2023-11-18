@@ -1,15 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            .formeleman{
+                color: darkblue;
+                font-size: 14px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                background-color: whitesmoke;
+                border-color: darkmagenta;
+                border-width: 5px;
+                border-style: dotted;
+                margin: 10px;
+                padding: 10px;
 
+            }
+          
+
+        
+                
+
+           
+            
+           
+        </style>
     </head>
     <body>
-        <h1>Üye Kayıt Formu:</h1>
-        <form name="kayit" action="kayit.php" method="get">
-            Ad Soyad <input type="text" name="adsoyad">
+        <form>
+            İsim Soyisim: <input class="formeleman" type="text">
             <br>
-            <input type="submit">
+            Email: <input class="formeleman" type="email">
+            <br>
+            Mesaj: <textarea cols="30" rows="5" class="formeleman">
+                
+
+            </textarea>
+            <br>
+            <input class="formeleman" type="submit">
+            <input class="formeleman" type="reset">
 
         </form>
+
     </body>
 </html>
