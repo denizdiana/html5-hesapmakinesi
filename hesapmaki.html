@@ -1,0 +1,152 @@
+html
+HTML5 ile hesap makinesi:
+
+<html>
+<head>
+  <style>
+    .calculator {
+      width: 300px;
+      height: 400px;
+      border: 1px solid black;
+      margin: auto;
+      padding: 10px;
+    }
+
+    .display {
+      width: 280px;
+      height: 50px;
+      border: 1px solid black;
+      font-size: 30px;
+      text-align: right;
+    }
+
+    .button {
+      width: 60px;
+      height: 60px;
+      border: 1px solid black;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" class="display" value="0" disabled>
+    <table>
+      <tr>
+        <td><button id="clear" class="button">C</button></td>
+        <td><button id="divide" class="button">/</button></td>
+        <td><button id="multiply" class="button">*</button></td>
+        <td><button id="backspace" class="button">&larr;</button></td>
+      </tr>
+      <tr>
+        <td><button id="seven" class="button">7</button></td>
+        <td><button id="eight" class="button">8</button></td>
+        <td><button id="nine" class="button">9</button></td>
+        <td><button id="subtract" class="button">-</button></td>
+      </tr>
+      <tr>
+        <td><button id="four" class="button">4</button></td>
+        <td><button id="five" class="button">5</button></td>
+        <td><button id="six" class="button">6</button></td>
+        <td><button id="add" class="button">+</button></td>
+      </tr>
+      <tr>
+        <td><button id="one" class="button">1</button></td>
+        <td><button id="two" class="button">2</button></td>
+        <td><button id="three" class="button">3</button></td>
+        <td rowspan="2"><button id="equal" class="button" style="height: 120px;">=</button></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button id="zero" class="button" style="width: 120px;">0</button></td>
+        <td><button id="dot" class="button">.</button></td>        
+      </tr>      
+    </table>    
+  </div>
+
+  <script>
+
+    // Get the elements from the document
+    var display = document.getElementById("display");
+    var clear = document.getElementById("clear");
+    var divide = document.getElementById("divide");
+    var multiply = document.getElementById("multiply");
+    var backspace = document.getElementById("backspace");
+    var seven = document.getElementById("seven");
+    var eight = document.getElementById("eight");
+    var nine = document.getElementById("nine");
+    var subtract = document.getElementById("subtract");
+    var four = document.getElementById("four");
+    var five = document.getElementById("five");
+    var six = document.getElementById("six");
+    var add = document.getElementById("add");
+    var one = document.getElementById("one");
+    var two = document.getElementById("two");
+    var three = document.getElementById("three");
+    var equal = document.getElementById("equal");
+    var zero = document.getElementById("zero");
+    var dot = document.getElementById("dot");
+
+    // Define some variables to store the input and output
+    var input = "";
+    var output = "";
+
+    // Define a function to update the display
+    function updateDisplay() {
+      display.value = input;
+    }
+
+    // Define a function to clear the input and output
+    function clearAll() {
+      input = "";
+      output = "";
+      updateDisplay();
+    }
+
+    // Define a function to append a character to the input
+    function append(char) {
+      input += char;
+      updateDisplay();
+    }
+
+    // Define a function to delete the last character of the input
+    function back() {
+      input = input.slice(0, -1);
+      updateDisplay();
+    }
+
+    // Define a function to evaluate the input and show the output
+    function calculate() {
+      try {
+        output = eval(input);
+        display.value = output;
+        input = output.toString();
+      } catch (error) {
+        display.value = "Hata";
+        input = "";
+      }
+      
+    }
+
+    // Add event listeners to the buttons
+    clear.addEventListener("click", clearAll);
+    divide.addEventListener("click", function() {append("/");});
+    multiply.addEventListener("click", function() {append("*");});
+    backspace.addEventListener("click", back);
+    seven.addEventListener("click", function() {append("7");});
+    eight.addEventListener("click", function() {append("8");});
+    nine.addEventListener("click", function() {append("9");});
+    subtract.addEventListener("click", function() {append("-");});
+    four.addEventListener("click", function() {append("4");});
+    five.addEventListener("click", function() {append("5");});
+    six.addEventListener("click", function() {append("6");});
+    add.addEventListener("click", function() {append("+");});
+    one.addEventListener("click", function() {append("1");});
+    two.addEventListener("click", function() {append("2");});
+    three.addEventListener("click", function() {append("3");});
+    equal.addEventListener("click", calculate);
+    zero.addEventListener("click", function() {append("0");});
+    dot.addEventListener("click", function() {append(".");});
+
+  </script>
+</body>
+</html>
